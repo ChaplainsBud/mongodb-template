@@ -1,0 +1,25 @@
+{
+  "name": "mongodb-template",
+  "version": "1.0.0",
+  "description": "This repo will be made into a template for other projects to be cloned, and then built upon.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChaplainsBud/mongodb-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChaplainsBud/mongodb-template/issues"
+  },
+  "homepage": "https://github.com/ChaplainsBud/mongodb-template#readme",
+  "dependencies": {
+    "mongodb": "^4.1.3"
+  }
+}
