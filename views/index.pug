@@ -6,8 +6,10 @@ head
   title Document
   link(rel="stylesheet", href="style.css")
 h1 Integrate browser UI with MongoDB
-label(for='user_name') User Name:
-input#user_name(type='text')
-p#log
+form(action="/hmm") 
+  label(for='user_name') User Name:
+  input#user_name(type="text" name="fname" value="John")
+  input#user_button(type="submit")
+  p#log
 script(src='ui.js')
 
