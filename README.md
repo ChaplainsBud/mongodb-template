@@ -1,5 +1,14 @@
 # mongodb-template
 
+Architecture:
+
+File structure
+Frontend and Backend Folders
+.env variables for uri and password
+Separate files for db and server
+
+---
+
 0. This repo will be made into a template for other projects to be cloned, and then built upon.
 
 https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository
