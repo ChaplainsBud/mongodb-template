@@ -17,6 +17,25 @@ async function main() {
   const collection = db.collection('kittens');
 
   // the following code examples can be pasted here...
+  
+  //CREATE
+  // const insertResult = await collection.insertMany([{ name: "Timmy" }, { name: "Titus" }, { name: "Fred" }]);
+  // console.log('Inserted documents =>', insertResult);
+
+  const insertResult = await collection.insertOne({name:"Minishka"});
+  console.log('Inserted documents =>', insertResult);
+
+  //READ
+  // const findResult = await collection.find({}).toArray();
+  // console.log('Found documents =>', findResult);
+
+  // const filteredDocs = await collection.find({ a: 3 }).toArray();
+  // console.log('Found documents filtered by { a: 3 } =>', filteredDocs);
+
+  //UPDATE
+
+  //DELETE
+
 
   return 'done.';
 }
