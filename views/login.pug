@@ -6,8 +6,11 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
     body 
-    p #{myVar}
-    p
-        a(href='/') Go back
-      
-    script(src="ui2.js") 
+    h1 Log In 
+    form(action="/ohyeah")
+        label(for='user_name') User Name: 
+        input#user_name(type='text' placeholder='fetch user from db')
+        input(type='submit')
+        a(href="/") Home  
+    script(src='ui4.js')
+

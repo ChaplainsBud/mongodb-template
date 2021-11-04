@@ -40,10 +40,22 @@ app.listen(3000)
 app.set('view engine', 'pug')
 app.use(express.static('public'))
 
+// home page 
 app.get('/', (req, res) => {
+  res.render('home');
+})
+
+app.get('/register', (req, res) => {
   res.render('index');
 })
 
+app.get('/login', (req, res) => {
+  res.render('login');
+}) 
+
+app.get('ohyeah', (req, res) => {
+  // similar to /hmmm, but instead of insert, find() 
+})
 
 app.post('/', (req, res) => {
 
@@ -66,7 +78,7 @@ app.get('/hmm', (req, res) => {
   .then(console.log)
   .catch(console.error)
   // what if I keep this open, and add mongo driver CRUD function to Express function? 
-  // .finally(() => client.close());
+  .finally(() => client.close());
 
 })
 
