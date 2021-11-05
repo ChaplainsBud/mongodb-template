@@ -151,7 +151,7 @@ app.get('/updated', (req, res) => {
 
   console.log(parsed.fname, parsed.nname);
   
-  res.render('ohyeah', { findVar: `This is the found: data ${parsed.fname}`,
+  res.render('updated', { findVar: `This is the found: data ${parsed.fname}`,
   setVar: `This is the set: data ${parsed.nname}` });
   console.log(req.query)
   
