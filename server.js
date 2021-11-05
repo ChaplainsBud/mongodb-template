@@ -138,16 +138,24 @@ let findVar = "original findVar"
 let setVar = "original setVar"
 
 // tricky, it's going to be part of log in's page
+// tricky, it's going to find AND update
+// tricky, it's going a varied UI 
+
+// req.query === TWO Variables, not ONE 
 app.get('/updated', (req, res) => {
   let stringed = JSON.stringify(req.query);  
   let parsed = JSON.parse(stringed);
-  globvar2 = parsed.fname; 
-  console.log(parsed.fname);
+
+  findVar = parsed.fname; 
+  setVar = parsed.nname; 
+
+  console.log(parsed.fname, parsed.nname);
   
-  res.render('ohyeah', { myVar: `This is the fetched: data ${parsed.fname}` });
+  res.render('ohyeah', { findVar: `This is the found: data ${parsed.fname}`,
+  setVar: `This is the set: data ${parsed.nname}` });
   console.log(req.query)
   
-  main2(globvar2)
+  main3(findVar, setVar)
   .then(console.log)
   .catch(console.error)
   // what if I keep this open, and add mongo driver CRUD function to Express function? 

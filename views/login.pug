@@ -7,10 +7,17 @@ html(lang="en")
         title Document
     body 
     h1 Log In
-    form(action="/ohyeah") 
+    form#form1(action="/ohyeah") 
         label(for='user_name') User Name:
         input#user_name(type="text" name="fname" value="John" placeholder='fetch from db')
         input#user_button(type="submit")
         p#log
         a(href="/") Home
+    h2 Update Name    
+    form#form2(action="/updated")
+        label#user_name1(for='user_name1') User Name:
+        input#user_name1(type='text' name="fname" value="Jane" placeholder='fetch this name')
+        label#user_name2(for='') New Name
+        input#user_name2(type='text' name="nname" value="Joy" placeholder='set this name')
+        input#user_button2(type='submit')
     script(src='ui4.js')
