@@ -62,6 +62,22 @@ async function main3(expressProvidedVariable, expressProvidedVariable2) {
   return 'done.';
 }
 
+async function main4(expressProvidedVariable) {  // only one parameter, item to delete
+  // Use connect method to connect to the server
+  await client.connect();
+  console.log('Connected successfully to server');
+  const db = client.db(dbName);
+  const collection = db.collection('kittens');
+
+  // the following code examples can be pasted here...
+  // make sure find({name: String})
+
+  const deleteResult = await collection.deleteMany({ name: `${delVar}` });
+  console.log('Deleted documents =>', deleteResult);
+
+  return 'done.';
+}
+
 
 
 app.get('/')
@@ -156,6 +172,35 @@ app.get('/updated', (req, res) => {
   console.log(req.query)
   
   main3(findVar, setVar)
+  .then(console.log)
+  .catch(console.error)
+  // what if I keep this open, and add mongo driver CRUD function to Express function? 
+  .finally(() => client.close());
+
+})
+
+// DELETE: Is is the same as update, but update to null? 
+
+/*
+i. create a delete function above
+ii. express render a pug file 
+iii. express render middleware run main4(deleteVar)
+*/
+let delVar = "original deleted value"
+
+app.get('/deleted', (req, res) => {
+  let stringed = JSON.stringify(req.query);  
+  let parsed = JSON.parse(stringed);
+
+  delVar = parsed.fname; 
+   
+
+  console.log(parsed.fname);
+  
+  res.render('deleted', { delVar: `This is the deleted: data ${parsed.fname}` });
+  console.log(req.query)
+  
+  main4(delVar)
   .then(console.log)
   .catch(console.error)
   // what if I keep this open, and add mongo driver CRUD function to Express function? 

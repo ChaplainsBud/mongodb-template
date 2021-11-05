@@ -20,4 +20,9 @@ html(lang="en")
         label#user_name2(for='') New Name
         input#user_name2(type='text' name="nname" value="Joy" placeholder='set this name')
         input#user_button2(type='submit')
+    h2 Delete Name
+    form#form3(action="/deleted")
+        label#user_del1(for='user_name1') User Name:
+        input#user_del1(type='text' name="fname" value="Zoe" placeholder='del this name')
+        input#user_button2(type='submit')    
     script(src='ui4.js')
