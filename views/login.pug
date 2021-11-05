@@ -6,11 +6,11 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
     body 
-    h1 Log In 
-    form(action="/ohyeah")
-        label(for='user_name') User Name: 
-        input#user_name(type='text' placeholder='fetch user from db')
-        input(type='submit')
-        a(href="/") Home  
+    h1 Log In
+    form(action="/ohyeah") 
+        label(for='user_name') User Name:
+        input#user_name(type="text" name="fname" value="John" placeholder='fetch from db')
+        input#user_button(type="submit")
+        p#log
+        a(href="/") Home
     script(src='ui4.js')
-

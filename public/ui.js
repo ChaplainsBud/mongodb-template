@@ -7,16 +7,6 @@ let fm = document.querySelector('form');
 
 inp1.style.backgroundColor = "skyblue";
 
-// Alert: must push 'return' to enter input data, not just a keydown
-// inp1.addEventListener('change', (e) => {
-    
-//     console.log(e.target.value);
-//     log.textContent = e.target.value;
-//     userName = e.target.value;
-//     console.log(`The userName is now ${userName}`);
-
-// })
-
 
 fm.addEventListener('submit', (e) => {
     // e.preventDefault();

@@ -31,6 +31,36 @@ async function main(expressProvidedVariable) {
   return 'done.';
 }
 
+async function main2(expressProvidedVariable) {
+  // Use connect method to connect to the server
+  await client.connect();
+  console.log('Connected successfully to server');
+  const db = client.db(dbName);
+  const collection = db.collection('kittens');
+
+  // the following code examples can be pasted here...
+  // make sure find({name: String})
+  const filteredDocs = await collection.find({ name: `${globvar2}` }).toArray();
+  console.log('Found documents filtered by { name: `${globvar2}` } =>', filteredDocs);
+  console.log(`This is what won't be found yet: ${globvar2}`)
+
+  return 'done.';
+}
+
+async function main3(expressProvidedVariable, expressProvidedVariable2) {
+  // Use connect method to connect to the server
+  await client.connect();
+  console.log('Connected successfully to server');
+  const db = client.db(dbName);
+  const collection = db.collection('kittens');
+
+  // the following code examples can be pasted here...
+  // make sure find({name: String})
+  const updateResult = await collection.updateOne({ name: `${findVar}` }, { $set: { name: `${setVar}` } });
+  console.log('Updated documents =>', updateResult);
+
+  return 'done.';
+}
 
 
 
@@ -53,14 +83,7 @@ app.get('/login', (req, res) => {
   res.render('login');
 }) 
 
-app.get('ohyeah', (req, res) => {
-  // similar to /hmmm, but instead of insert, find() 
-})
-
-app.post('/', (req, res) => {
-
-})
-
+// CREATE 
 let globvar = "original value"; 
 
 app.get('/hmm', (req, res) => {
@@ -82,8 +105,52 @@ app.get('/hmm', (req, res) => {
 
 })
 
+/* READ -> find what is inputted 
+ change every particular from CREATE 
+ I'm confused. What do I need to put in to get something? the id? 
+*/
+let globvar2 = "original value2" 
 
-
-
-
+app.get('/ohyeah', (req, res) => {
+  let stringed = JSON.stringify(req.query);  
+  let parsed = JSON.parse(stringed);
+  globvar2 = parsed.fname; 
+  console.log(parsed.fname);
   
+  res.render('ohyeah', { myVar: `This is the fetched: data ${parsed.fname}` });
+  console.log(req.query)
+  
+  main2(globvar2)
+  .then(console.log)
+  .catch(console.error)
+  // what if I keep this open, and add mongo driver CRUD function to Express function? 
+  .finally(() => client.close());
+
+})
+
+// UPDATE -> TWO VARS, one for find and one for set 
+
+/*
+on the log in page, you can READ(find) OR you can UPDATE(find&&set)
+*/
+
+let findVar = "original findVar"
+let setVar = "original setVar"
+
+// tricky, it's going to be part of log in's page
+app.get('/updated', (req, res) => {
+  let stringed = JSON.stringify(req.query);  
+  let parsed = JSON.parse(stringed);
+  globvar2 = parsed.fname; 
+  console.log(parsed.fname);
+  
+  res.render('ohyeah', { myVar: `This is the fetched: data ${parsed.fname}` });
+  console.log(req.query)
+  
+  main2(globvar2)
+  .then(console.log)
+  .catch(console.error)
+  // what if I keep this open, and add mongo driver CRUD function to Express function? 
+  .finally(() => client.close());
+
+})
